@@ -1,10 +1,18 @@
+// app-routing.module.ts
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { AccueilComponent } from './accueil/accueil.component';
+import { BoxesComponent } from './boxes/boxes.component';
+import { BoxDetailsComponent } from './box-details/box-details.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: AccueilComponent },
+  { path: 'boxes', component: BoxesComponent },
+  { path: 'box-details/:id', component: BoxDetailsComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
