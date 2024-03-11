@@ -1,42 +1,15 @@
-<!-- accueil.component.html -->
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="/">Logo</a>
-  <div>
-    <a class="nav-link" routerLink="/boxes">Menu</a>
-  </div>
-</nav>
-<div class="container">
-<div class="jumbotron jumbotron-fluid text-center bg-dark text-light">
-  <div class="container">
-    <h1 class="display-4">Bienvenue sur notre site de commande de sushis!</h1>
-    <p class="lead">Découvrez notre sélection de délicieuses boîtes de sushi.</p>
-    <hr class="my-4">
-    <p>Commandez vos sushis préférés en quelques clics.</p>
-    <a class="btn btn-primary btn-lg" routerLink="/boxes" role="button">Voir le menu</a>
-  </div>
-</div>
-
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-6">
-      <h2 class="text-primary">Nos Spécialités</h2>
-      <p>Découvrez nos délicieuses boîtes de sushis préparées avec soin par nos chefs experts.</p>
-      <ul class="list-unstyled">
-        <li><i class="fas fa-check-circle text-success"></i> Des ingrédients frais et de qualité</li>
-        <li><i class="fas fa-check-circle text-success"></i> Un large choix pour satisfaire toutes les envies</li>
-        <li><i class="fas fa-check-circle text-success"></i> Commande en ligne facile et rapide</li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h2 class="text-primary">Pourquoi Choisir Nos Sushis?</h2>
-      <p>Nous nous engageons à offrir une expérience culinaire exceptionnelle avec nos sushis uniques.</p>
-      <ul class="list-unstyled">
-        <li><i class="fas fa-check-circle text-success"></i> Saveurs authentiques et variées</li>
-        <li><i class="fas fa-check-circle text-success"></i> Commande personnalisée selon vos préférences</li>
-        <li><i class="fas fa-check-circle text-success"></i> Livraison rapide et efficace</li>
-      </ul>
+<div class="container-fluid p-0 m-0">
+  <div class="jumbotron jumbotron-fluid text-center bg-dark text-light" style="background-image: url('../assets/sushi_fond.jpeg'); background-size: cover; height: 100vh; margin: 0;">
+    <div class="container d-flex align-items-center justify-content-center vh-100">
+      <div class="text-center">
+        <h1 class="display-1 nom-logo">SUSHI'LAB</h1>
+        <p class="lead sousnom gris">SUSHI BAR</p>
+        <br><br>
+        <hr class="my-4">
+        <br><br>
+        <p class="gris">Sushi'Lab comme vous n'en avez jamais vu</p>
+        <a class="btn btn-primary btn-lg custom-btn-color" routerLink="/boxes" role="button">Voir le menu</a>
+      </div>
     </div>
   </div>
-</div>
-
 </div>

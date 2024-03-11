@@ -8,22 +8,36 @@ import { Box } from './box.model';
 })
 export class BoxesService {
   private boxes: Box[] = [
-    { id: 1, name: 'Box A', description: 'Description A', price: 101, quantity: 0 },
-    { id: 2, name: 'Box B', description: 'Description B', price: 150, quantity: 0 },
-    { id: 3, name: 'Box C', description: 'Description C', price: 15, quantity: 0 },
-    { id: 4, name: 'Box D', description: 'Description D', price: 27, quantity: 0 },
-    { id: 5, name: 'Box E', description: 'Description E', price: 96, quantity: 0 },
-    { id: 6, name: 'Box F', description: 'Description F', price: 67, quantity: 0 },
-    { id: 7, name: 'Box G', description: 'Description G', price: 55, quantity: 0 },
-    
+    { id: 1, name: 'Box 1', description: 'Description 1', price: 10, quantity: 0, category: 'Category 1' },
+    { id: 2, name: 'Box 2', description: 'Description 2', price: 20, quantity: 0, category: 'Category 2' },
+    { id: 3, name: 'Box 3', description: 'Description 3', price: 15, quantity: 0, category: 'Category 1' },
+    { id: 4, name: 'Box 4', description: 'Description 4', price: 25, quantity: 0, category: 'Category 3' },
+    { id: 5, name: 'Box 5', description: 'Description 5', price: 13, quantity: 0, category: 'Category 1' },
+    { id: 6, name: 'Box 6', description: 'Description 6', price: 76, quantity: 0, category: 'Category 2' },
+    { id: 7, name: 'Box 7', description: 'Description 7', price: 24, quantity: 0, category: 'Category 1' },
+    { id: 8, name: 'Box 8', description: 'Description 8', price: 52, quantity: 0, category: 'Category 3' },
+    { id: 9, name: 'Box 9', description: 'Description 9', price: 32, quantity: 0, category: 'Category 1' },
+    { id: 10, name: 'Box 10', description: 'Description 10', price: 35, quantity: 0, category: 'Category 2' },
+    { id: 11, name: 'Box 11', description: 'Description 11', price: 53, quantity: 0, category: 'Category 1' },
+    { id: 12, name: 'Box 12', description: 'Description 12', price: 12, quantity: 0, category: 'Category 3' },
   ];
 
   getBoxes(): Observable<Box[]> {
     return of(this.boxes);
   }
 
-  getBoxDetails(id: number): Box {
-    // Ajoutez la logique pour récupérer les détails de la boîte
-    return this.boxes.find((box) => box.id === id) || { id: 0, name: '', description: '', price: 0, quantity: 0 };
+  getCategories(): Observable<string[]> {
+    const categories = Array.from(new Set(this.boxes.map((box) => box.category)));
+    return of(categories);
+  }
+
+  getBoxesByCategory(category: string): Observable<Box[]> {
+    const filteredBoxes = this.boxes.filter((box) => box.category === category);
+    return of(filteredBoxes);
+  }
+
+  getBoxDetails(boxId: number): Observable<Box | undefined> {
+    const box = this.boxes.find((b) => b.id === boxId);
+    return of(box);
   }
 }

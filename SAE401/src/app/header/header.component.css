@@ -1,3 +1,35 @@
-* {
-    font-family: 'Fira Sans Condensed', sans-serif;
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+
+.custom-nav-color {
+  background-color: #000000;
+}
+
+.navbar a.nav-link {
+  color: white;
+}
+
+.navbar a.nav-link:hover {
+  color: #C7914C;
+}
+
+.navbar-toggler-icon {
+  background-color: #000000;
 }

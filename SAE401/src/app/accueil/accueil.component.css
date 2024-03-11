@@ -1,0 +1,22 @@
+.nom-logo {
+    font-size: 150px;
+}
+
+.sousnom {
+    font-size: 25px;
+    margin-bottom: 2%;
+}
+
+.custom-btn-color {
+    background-color: #C7914C;
+    border-color: #C7914C;
+}
+
+.custom-btn-color:hover {
+    background-color: #976e40;
+    border-color: #976e40;
+}
+
+.gris{
+    color: #d5d5d5;
+}

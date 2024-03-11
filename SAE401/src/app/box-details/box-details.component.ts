@@ -10,7 +10,7 @@ import { Box } from '../boxes/box.model';
   styleUrls: ['./box-details.component.css'],
 })
 export class BoxDetailsComponent implements OnInit {
-  boxDetails!: Box; // Ajoutez le point d'exclamation pour indiquer que cela sera initialisé ultérieurement
+  boxDetails!: Box;
 
   constructor(private route: ActivatedRoute, private boxesService: BoxesService) {}
 
@@ -19,7 +19,13 @@ export class BoxDetailsComponent implements OnInit {
 
     if (boxIdString) {
       const boxId = +boxIdString;
-      this.boxDetails = this.boxesService.getBoxDetails(boxId);
+      this.boxesService.getBoxDetails(boxId).subscribe((box) => {
+        if (box) {
+          this.boxDetails = box;
+        } else {
+          // Gérez le cas où 'box' est undefined (éventuellement redirigez l'utilisateur ou affichez un message d'erreur)
+        }
+      });
     } else {
       // Gérez le cas où 'id' est null (éventuellement redirigez l'utilisateur ou affichez un message d'erreur)
     }

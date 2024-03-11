@@ -1,4 +1,3 @@
-// boxes.component.ts
 import { Component, OnInit } from '@angular/core';
 import { BoxesService } from './boxes.service';
 import { Box } from './box.model';
@@ -14,12 +13,17 @@ export class BoxesComponent implements OnInit {
   totalAmount: number = 0;
   maxBoxes: number = 10;
   currentSort: string = 'default';
+  categories: string[] = [];
 
   constructor(private boxesService: BoxesService) {}
 
   ngOnInit(): void {
     this.boxesService.getBoxes().subscribe((boxes) => {
       this.boxes = boxes;
+    });
+
+    this.boxesService.getCategories().subscribe((categories) => {
+      this.categories = categories;
     });
   }
 
@@ -68,6 +72,20 @@ export class BoxesComponent implements OnInit {
       this.boxes.sort((a, b) => a.name.localeCompare(b.name));
     } else {
       this.boxesService.getBoxes().subscribe((boxes) => {
+        this.boxes = boxes;
+      });
+    }
+  }
+
+  filterByCategory(category: string): void {
+    if (category === 'all') {
+      // Si la catégorie est 'all', réinitialiser pour afficher toutes les boîtes
+      this.boxesService.getBoxes().subscribe((boxes) => {
+        this.boxes = boxes;
+      });
+    } else {
+      // Filtrer les boîtes par catégorie sélectionnée
+      this.boxesService.getBoxesByCategory(category).subscribe((boxes) => {
         this.boxes = boxes;
       });
     }

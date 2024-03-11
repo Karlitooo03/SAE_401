@@ -4,4 +4,5 @@ export interface Box {
   description: string;
   price: number;
   quantity: number;
+  category: string;
 }
