@@ -1,9 +1,9 @@
 .nom-logo {
-    font-size: 150px;
+    font-size: 10rem;
 }
 
 .sousnom {
-    font-size: 25px;
+    font-size: 3rem;
     margin-bottom: 2%;
 }
 
@@ -17,6 +17,31 @@
     border-color: #976e40;
 }
 
-.gris{
+.gris {
     color: #d5d5d5;
+}
+
+.hidden {
+    overflow-y: hidden;
+    font-family: 'Crimson Text', sans-serif;
+}
+
+@media (max-width: 576px) {
+    .nom-logo {
+        font-size: 3rem;
+    }
+
+    .sousnom {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nom-logo {
+        font-size: 5rem;
+    }
+
+    .sousnom {
+        font-size: 2rem;
+    }
 }

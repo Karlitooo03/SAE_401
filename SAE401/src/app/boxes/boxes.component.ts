@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { BoxesService } from './boxes.service';
 import { Box } from './box.model';
 
@@ -79,15 +79,29 @@ export class BoxesComponent implements OnInit {
 
   filterByCategory(category: string): void {
     if (category === 'all') {
-      // Si la catégorie est 'all', réinitialiser pour afficher toutes les boîtes
       this.boxesService.getBoxes().subscribe((boxes) => {
         this.boxes = boxes;
       });
     } else {
-      // Filtrer les boîtes par catégorie sélectionnée
       this.boxesService.getBoxesByCategory(category).subscribe((boxes) => {
         this.boxes = boxes;
       });
     }
   }
+
+  @ViewChild('cartSidebar') cartSidebar!: ElementRef | null;
+
+  cartSidebarVisible = false;
+
+  toggleCart() {
+    this.cartSidebarVisible = !this.cartSidebarVisible;
+  }
+  @ViewChild('categoriesContainer') categoriesContainer!: ElementRef | null;
+
+  showCategories = false;
+
+  toggleCategories() {
+    this.showCategories = !this.showCategories;
+  }
+
 }

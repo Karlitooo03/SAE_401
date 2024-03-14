@@ -1,100 +1,228 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  .titre{
-    margin-top: 100px;
-    margin-bottom: 100px;
-  }
+.titre {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
 
-  /* Catégories */
-  .categories-sidebar {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 110px;
-    left: 20px;
-    width: 350px;
-    z-index: 1;
+/* Catégories */
+.categories-sidebar {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 110px;
+  left: 20px;
+  width: 350px;
+  z-index: 1;
 }
 
 .categories-sidebar button {
-    margin-bottom: 6px;
-    width: 100%;
+  margin-bottom: 6px;
+  width: 100%;
 }
-  
-  /* Sushi Boxes */
-  .sushi-boxes {
-    margin-left: 250px;
-    margin-right: 250px;
-    padding-top: 60px; 
-  }
-  
-  .sushi-boxes .sorting-buttons {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  /* Panier */
-  .cart-sidebar {
-    position: fixed;
-    top: 110px;
-    right: 9vw;
-  }
-  
-  .cart.card {
-    height: 60vh;
-  }
-  
-  .cart-sidebar .cart.card {
-    height: auto;
-    width: 350px;
-    
-  }
-  
-  .cart-item {
-    margin-bottom: 10px;
-  }
-  
-  .total-amount {
-    margin-top: 20px;
-  }
-  
-  /* Carte des Sushi Boxes */
-  .card {
+
+/* Sushi Boxes */
+.sushi-boxes {
+  margin-left: 250px;
+  margin-right: 250px;
+  padding-top: 60px;
+}
+
+.sushi-boxes .sorting-buttons {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Panier */
+.cart-sidebar-mobile {
+  position: fixed;
+  top: 110px;
+  right: 9vw;
+}
+
+.cart.card {
+  height: 60vh;
+}
+
+.cart-sidebar-mobile .cart.card {
+  height: auto;
+  width: 350px;
+
+}
+
+.cart-item {
+  margin-bottom: 10px;
+}
+
+.total-amount {
+  margin-top: 20px;
+}
+
+/* Carte des Sushi Boxes */
+.card {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  margin-bottom: 10px;
+}
+
+.card-text {
+  margin-bottom: 15px;
+}
+
+.action-buttons button {
+  margin-right: 5px;
+}
+
+/* Bouton Passer la commande */
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.categories-btn,
+.cart-toggle-button {
+  display: none; /* Affichez le bouton initialement sur les écrans larges */
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Couleur et opacité du fond flou */
+  z-index: 999; /* Placez-le au-dessus des autres éléments */
+}
+
+
+
+@media (max-width: 576px) {
+  .categories-sidebar {
+    position: static;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
+  }
+
+  .sorting-buttons {
+    text-align: center;
+  }
+
+  .sushi-boxes {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .cart-sidebar-mobile {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px; /* Ajustez la largeur maximale selon vos préférences */
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
   }
-  
-  .card-body {
-    padding: 15px;
+
+  .cart-sidebar-mobile.show {
+    display: block;
   }
-  
-  .card-title {
-    margin-bottom: 10px;
+
+  .cart-toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #C7914C;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
   }
-  
-  .card-text {
-    margin-bottom: 15px;
+
+  .categories-btn {
+    display: block;
+    position: fixed;
+    top: 90px;
+    left: 10px;
+    z-index: 2;
+    font-size: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #C7914C;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
   }
-  
-  .action-buttons button {
-    margin-right: 5px;
+
+  .categories-sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 1000;
+    overflow-y: auto;
   }
-  
-  /* Bouton Passer la commande */
-  .btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
+
+  .categories-sidebar.show {
+    display: block;
   }
-  
+}
+
+
+
+
+@media (max-width: 768px) {
+  .categories-sidebar {
+    position: static;
+    margin-bottom: 20px;
+    margin-top: 7rem;
+  }
+
+  .sorting-buttons {
+    text-align: center;
+  }
+
+  .cart-sidebar {
+    position: static;
+    margin-top: 20px;
+  }
+
+  .sushi-boxes {
+    margin-left: 0px;
+  }
+
+  .categories-btn,
+  .cart-toggle-button {
+    display: block; /* Cachez le bouton sur les écrans plus petits */
+  }
+}
