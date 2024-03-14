@@ -1,0 +1,48 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 130px;
+    background-color: #fff; /* Couleur de fond */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  textarea {
+    height: 150px; /* Hauteur du champ de texte */
+  }
+  
+  .btn-primary {
+    background-color: #007bff; /* Couleur de fond du bouton */
+    border-color: #007bff;
+    color: #fff; /* Couleur du texte du bouton */
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* Couleur de fond du bouton au survol */
+    border-color: #0056b3;
+  }
+  
