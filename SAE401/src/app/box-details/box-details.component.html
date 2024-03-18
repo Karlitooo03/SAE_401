@@ -1,19 +1,10 @@
-<!-- box-details.component.html -->
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="/">Logo</a>
-    <div>
-      <a class="nav-link" routerLink="/boxes">Menu</a>
-    </div>
-  </nav>
-  <div class="container mt-4">
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">Details of {{ boxDetails.name }}</h2>
-        <p class="card-text"><strong>Description:</strong> {{ boxDetails.description }}</p>
-        <p class="card-text"><strong>Price:</strong> ${{ boxDetails.price }}</p>
-        <p class="card-text"><strong>Quantity:</strong> {{ boxDetails.quantity }}</p>
-        <!-- Ajoutez d'autres détails de la boîte ici -->
-      </div>
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Details de la {{ boxDetails.name }}</h2>
+      <p class="card-text"><strong>Description :</strong> {{ boxDetails.description }}</p>
+      <p class="card-text"><strong>Prix :</strong> ${{ boxDetails.price }}</p>
+      <p class="card-text"><strong>Quantité :</strong> {{ boxDetails.quantity }}</p>
     </div>
   </div>
-  
+</div>

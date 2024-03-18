@@ -20,18 +20,22 @@
       <div class="row">
         <div *ngFor="let box of boxes" class="col-md-6 mb-3">
           <div class="card">
+            <a [routerLink]="['/box-details', box.id]">
+            <!-- <img src="{{ box.imageUrl }}" class="card-img-top" alt="{{ box.name }}"> -->
             <div class="card-body">
               <h4 class="card-title">{{ box.name }}</h4>
               <p class="card-text">{{ box.description }}</p>
               <p class="card-text"><strong>Prix :</strong> ${{ box.price }}</p>
               <p class="card-text"><strong>Quantité:</strong> {{ box.quantity }}</p>
-              <div class="action-buttons">
-                <button (click)="addToCart(box)" class="btn btn-success">+</button>
-                <button (click)="removeFromCart(box)" class="btn btn-danger">-</button>
-              </div>
+            </div>
+          </a>
+            <div class="action-buttons">
+              <button (click)="addToCart(box)" class="btn btn-success">+</button>
+              <button (click)="removeFromCart(box)" class="btn btn-danger">-</button>
             </div>
           </div>
         </div>
+        
       </div>
     </div>
 
@@ -40,7 +44,7 @@
     <div class="col-md-2 cart-sidebar-mobile" [ngClass]="{'show': cartSidebarVisible}">
       <div class="cart card">
         <h3 class="card-header">
-          <i class="fa-solid fa-basket-shopping"></i> Panier
+          <i class="bi bi-cart"></i> Panier
         </h3>
         <div class="card-body">
           <div *ngFor="let item of cart" class="cart-item">
@@ -59,11 +63,11 @@
     </div>
 
     <button class="btn btn-primary categories-btn" (click)="toggleCategories()">
-      <i class="fas fa-filter"></i>
+      <i class="bi bi-funnel"></i>
     </button>
 
     <button class="cart-toggle-button" (click)="toggleCart()">
-      <i class="fas fa-shopping-cart"></i>
+      <i class="bi bi-cart"></i>
     </button>
 
   </div>
