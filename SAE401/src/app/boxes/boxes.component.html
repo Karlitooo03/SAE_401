@@ -21,21 +21,20 @@
         <div *ngFor="let box of boxes" class="col-md-6 mb-3">
           <div class="card">
             <a [routerLink]="['/box-details', box.id]">
-              <!-- <img src="{{ box.imageUrl }}" class="card-img-top" alt="{{ box.name }}"> -->
-              <div class="card-body">
-                <h4 class="card-title">{{ box.name }}</h4>
-                <p class="card-text">{{ box.description }}</p>
-                <p class="card-text"><strong>Prix :</strong> ${{ box.price }}</p>
-                <p class="card-text"><strong>Quantité:</strong> {{ box.quantity }}</p>
-              </div>
-            </a>
+            <!-- <img src="{{ box.imageUrl }}" class="card-img-top" alt="{{ box.name }}"> -->
+            <div class="card-body">
+              <h4 class="card-title">{{ box.name }}</h4>
+              <p class="card-text">{{ box.description }}</p>
+              <p class="card-text"><strong>Prix :</strong> ${{ box.price }}</p>
+              <p class="card-text"><strong>Quantité:</strong> {{ box.quantity }}</p>
+            </div>
+          </a>
             <div class="action-buttons">
               <button (click)="addToCart(box)" class="btn btn-success">+</button>
               <button (click)="removeFromCart(box)" class="btn btn-danger">-</button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
