@@ -5,4 +5,5 @@ export interface Box {
   price: number;
   quantity: number;
   category: string;
+  // imageUrl: string
 }

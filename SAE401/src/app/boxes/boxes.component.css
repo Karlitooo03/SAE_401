@@ -9,6 +9,11 @@ body {
   margin-bottom: 100px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Catégories */
 .categories-sidebar {
   background-color: #fff;
@@ -89,7 +94,7 @@ body {
 }
 
 .action-buttons button {
-  margin-right: 5px;
+  margin: 0 5px 15px 10px;
 }
 
 /* Bouton Passer la commande */
@@ -100,7 +105,8 @@ body {
 
 .categories-btn,
 .cart-toggle-button {
-  display: none; /* Affichez le bouton initialement sur les écrans larges */
+  display: none;
+  /* Affichez le bouton initialement sur les écrans larges */
 }
 
 .overlay {
@@ -110,8 +116,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Couleur et opacité du fond flou */
-  z-index: 999; /* Placez-le au-dessus des autres éléments */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Couleur et opacité du fond flou */
+  z-index: 999;
+  /* Placez-le au-dessus des autres éléments */
 }
 
 
@@ -135,10 +143,11 @@ body {
     display: none;
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: 43%;
     transform: translate(-50%, -50%);
     width: 80%;
-    max-width: 400px; /* Ajustez la largeur maximale selon vos préférences */
+    max-width: 400px;
+    /* Ajustez la largeur maximale selon vos préférences */
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -170,14 +179,13 @@ body {
     top: 90px;
     left: 10px;
     z-index: 2;
-    font-size: 10px;
+    font-size: 20px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #C7914C;
     color: white;
     text-align: center;
-    line-height: 40px;
     cursor: pointer;
   }
 
@@ -195,6 +203,10 @@ body {
 
   .categories-sidebar.show {
     display: block;
+  }
+
+  .bi .bi-funnel {
+    font-size: 20px;
   }
 }
 
@@ -223,6 +235,6 @@ body {
 
   .categories-btn,
   .cart-toggle-button {
-    display: block; /* Cachez le bouton sur les écrans plus petits */
+    display: block;
   }
 }
