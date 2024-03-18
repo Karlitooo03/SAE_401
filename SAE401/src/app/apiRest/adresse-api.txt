@@ -1,0 +1,12 @@
+tri box:
+http://localhost:8888/SAE_401/SAE401/src/app/apiRest/commande/api.php
+http://localhost:8888/SAE_401/SAE401/src/app/apiRest/commande/exo.php?sort_by=prix
+http://localhost:8888/SAE_401/SAE401/src/app/apiRest/commande/exo.php?sort_by=nom
+http://localhost:8888/SAE_401/SAE401/src/app/apiRest/commande/exo.php?sort_by=saveur
+http://localhost:8888/SAE_401/SAE401/src/app/apiRest/commande/exo.php?sort_by=aliment
+
+saveur:
+http://localhost:8888/SAE_401/SAE401/src/app/apiRest/saveur/sav.php
+
+aliment:
+http://localhost:8888/SAE_401/SAE401/src/app/apiRest/aliment/aliment.php
