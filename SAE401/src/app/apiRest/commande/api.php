@@ -10,18 +10,44 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 // Connexion à la base de données
 $pdo = new PDO("mysql:host=localhost;dbname=sae401", "root", "root");
 
-// Requête pour récupérer toutes les boxes avec leurs aliments et saveurs associés
-$query = "
-    SELECT b.id_box, b.nom AS nom_box, b.nb_piece, b.prix,
-           GROUP_CONCAT(DISTINCT a.nom SEPARATOR ', ') AS aliments,
-           GROUP_CONCAT(DISTINCT s.nom SEPARATOR ', ') AS saveurs
-    FROM box b
-    LEFT JOIN box_aliment ba ON b.id_box = ba.id_box
-    LEFT JOIN box_saveur bs ON b.id_box = bs.id_box
-    LEFT JOIN aliment a ON ba.id_aliment = a.id_aliment
-    LEFT JOIN saveur s ON bs.id_saveur = s.id_saveur
-    GROUP BY b.id_box;
-";
+// Paramètres d'URL
+$sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : null;
+
+// Vérifier le paramètre de tri
+if ($sort_by === 'prix' || $sort_by === 'nom' || $sort_by === 'aliment' || $sort_by === 'saveur') {
+    // Requête SQL pour trier les boxes par prix, nom, aliment ou saveur
+    $query = "
+        SELECT b.id_box, b.nom AS nom_box, b.nb_piece, b.prix,
+               GROUP_CONCAT(DISTINCT a.nom SEPARATOR ', ') AS aliments,
+               GROUP_CONCAT(DISTINCT s.nom SEPARATOR ', ') AS saveurs
+        FROM box b
+        LEFT JOIN box_aliment ba ON b.id_box = ba.id_box
+        LEFT JOIN box_saveur bs ON b.id_box = bs.id_box
+        LEFT JOIN aliment a ON ba.id_aliment = a.id_aliment
+        LEFT JOIN saveur s ON bs.id_saveur = s.id_saveur
+        GROUP BY b.id_box
+        ORDER BY ";
+    
+    if ($sort_by === 'prix' || $sort_by === 'nom') {
+        $query .= "b.$sort_by ASC";
+    } elseif ($sort_by === 'aliment') {
+        $query .= "aliments ASC";
+    } elseif ($sort_by === 'saveur') {
+        $query .= "saveurs ASC";
+    }
+} else {
+    // Aucun tri par défaut si aucun paramètre n'est fourni
+    $query = "
+        SELECT b.id_box, b.nom AS nom_box, b.nb_piece, b.prix,
+               GROUP_CONCAT(DISTINCT a.nom SEPARATOR ', ') AS aliments,
+               GROUP_CONCAT(DISTINCT s.nom SEPARATOR ', ') AS saveurs
+        FROM box b
+        LEFT JOIN box_aliment ba ON b.id_box = ba.id_box
+        LEFT JOIN box_saveur bs ON b.id_box = bs.id_box
+        LEFT JOIN aliment a ON ba.id_aliment = a.id_aliment
+        LEFT JOIN saveur s ON bs.id_saveur = s.id_saveur
+        GROUP BY b.id_box"; // Suppression de l'ordre de tri par défaut
+}
 
 // Exécution de la requête
 $statement = $pdo->query($query);
