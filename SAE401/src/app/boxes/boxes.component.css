@@ -9,6 +9,11 @@ body {
   margin-bottom: 100px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Catégories */
 .categories-sidebar {
   background-color: #fff;
@@ -89,7 +94,7 @@ body {
 }
 
 .action-buttons button {
-  margin-right: 5px;
+  margin: 0 5px 15px 10px;
 }
 
 /* Bouton Passer la commande */
@@ -135,7 +140,7 @@ body {
     display: none;
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: 43%;
     transform: translate(-50%, -50%);
     width: 80%;
     max-width: 400px; /* Ajustez la largeur maximale selon vos préférences */
@@ -170,14 +175,13 @@ body {
     top: 90px;
     left: 10px;
     z-index: 2;
-    font-size: 10px;
+    font-size: 20px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #C7914C;
     color: white;
     text-align: center;
-    line-height: 40px;
     cursor: pointer;
   }
 
@@ -195,6 +199,10 @@ body {
 
   .categories-sidebar.show {
     display: block;
+  }
+
+  .bi .bi-funnel{
+    font-size: 20px;
   }
 }
 
