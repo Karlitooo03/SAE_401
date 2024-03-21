@@ -18,45 +18,57 @@ export class BoxesComponent implements OnInit {
   constructor(private boxesService: BoxesService) {}
 
   ngOnInit(): void {
-    this.boxesService.getBoxes().subscribe((boxes) => {
-      this.boxes = boxes;
+    this.boxesService.getBoxes().subscribe(boxes => {
+      this.boxes = boxes["boxes"].map((box: Box) => ({
+        ...box,
+        quantity: 0
+      }));
     });
-
+  
     this.boxesService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
   }
 
   addToCart(box: Box): void {
-    const cartItem = this.cart.find((item) => item.id === box.id);
-    const totalCartQuantity = this.cart.reduce((total, item) => total + item.quantity, 0);
-
-    if (totalCartQuantity < this.maxBoxes) {
+    if (this.cart.length < this.maxBoxes) {
+      const cartItem = this.cart.find(item => item.id === box.id);
       if (cartItem) {
         cartItem.quantity++;
       } else {
         this.cart.push({ ...box, quantity: 1 });
       }
-
-      box.quantity++;
-      this.totalAmount += box.price;
+      this.totalAmount += box.prix;
+    } else {
+      console.log('Maximum number of boxes reached in the cart.');
     }
   }
-
+  
+  
+  
+  
+  
+  
   removeFromCart(box: Box): void {
-    const cartItem = this.cart.find((item) => item.id === box.id);
-
-    if (cartItem && cartItem.quantity > 0) {
-      cartItem.quantity--;
-
-      if (cartItem.quantity === 0) {
-        this.cart = this.cart.filter((item) => item.id !== box.id);
+    const cartItemIndex = this.cart.findIndex((item) => item.id === box.id);
+  
+    if (cartItemIndex !== -1 && this.cart[cartItemIndex].quantity > 0) {
+      this.cart[cartItemIndex].quantity--;
+  
+      const boxIndex = this.boxes.findIndex((item) => item.id === box.id);
+      if (boxIndex !== -1) {
+        this.boxes[boxIndex].quantity--;
       }
-
-      box.quantity = Math.max(0, box.quantity - 1);
-      this.totalAmount -= box.price;
+  
+      if (this.cart[cartItemIndex].quantity === 0) {
+        this.cart.splice(cartItemIndex, 1);
+      }
+      this.totalAmount -= box.prix; // Mettre à jour totalAmount lors de la suppression d'un article du panier
     }
   }
+  
+  
+  
 
   placeOrder(): void {
     console.log('Order placed!');
@@ -67,9 +79,9 @@ export class BoxesComponent implements OnInit {
     this.currentSort = criteria;
 
     if (criteria === 'price') {
-      this.boxes.sort((a, b) => a.price - b.price);
+      this.boxes.sort((a, b) => a.prix - b.prix);
     } else if (criteria === 'name') {
-      this.boxes.sort((a, b) => a.name.localeCompare(b.name));
+      this.boxes.sort((a, b) => a.nom_box.localeCompare(b.nom_box));
     } else {
       this.boxesService.getBoxes().subscribe((boxes) => {
         this.boxes = boxes;
