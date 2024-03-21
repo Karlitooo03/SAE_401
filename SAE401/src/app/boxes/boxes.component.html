@@ -3,8 +3,7 @@
     <div class="col-md-3 categories-sidebar" [ngClass]="{'show': showCategories}">
       <h3>Catégories</h3>
       <button class="btn btn-secondary" (click)="filterByCategory('all')">Toutes</button>
-      <button *ngFor="let category of categories" class="btn btn-secondary" (click)="filterByCategory(category)">{{
-        category }}</button>
+      <button *ngFor="let category of categories" class="btn btn-secondary" (click)="filterByCategory(category)">{{ category }}</button>
     </div>
 
     <h2 class="mb-1 text-center titre">Nos Sushi Boxes</h2>
@@ -21,14 +20,13 @@
         <div *ngFor="let box of boxes" class="col-md-6 mb-3">
           <div class="card">
             <a [routerLink]="['/box-details', box.id]">
-            <!-- <img src="{{ box.imageUrl }}" class="card-img-top" alt="{{ box.name }}"> -->
-            <div class="card-body">
-              <h4 class="card-title">{{ box.name }}</h4>
-              <p class="card-text">{{ box.description }}</p>
-              <p class="card-text"><strong>Prix :</strong> ${{ box.price }}</p>
-              <p class="card-text"><strong>Quantité:</strong> {{ box.quantity }}</p>
-            </div>
-          </a>
+              <!-- <img src="{{ box.imageUrl }}" class="card-img-top" alt="{{ box.name }}"> -->
+              <div class="card-body">
+                <h4 class="card-title">{{ box.nom_box }}</h4>
+                <p class="card-text"><strong>Prix :</strong> {{ box.prix }} €</p>
+                <p class="card-text"><strong>Quantité:</strong> {{ box.quantity }}</p>
+              </div>
+            </a>
             <div class="action-buttons">
               <button (click)="addToCart(box)" class="btn btn-success">+</button>
               <button (click)="removeFromCart(box)" class="btn btn-danger">-</button>
@@ -48,7 +46,7 @@
         <div class="card-body">
           <div *ngFor="let item of cart" class="cart-item">
             <p>
-              <i class="fas fa-box"></i> {{ item.name }} - Quantité : {{ item.quantity }}
+              <i class="fas fa-box"></i> {{ item.nom_box }} - Quantité : {{ item.quantity }}
             </p>
           </div>
         </div>
