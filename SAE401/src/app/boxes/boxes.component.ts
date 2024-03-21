@@ -21,7 +21,7 @@ export class BoxesComponent implements OnInit {
     this.boxesService.getBoxes().subscribe(boxes => {
       this.boxes = boxes["boxes"].map((box: Box) => ({
         ...box,
-        quantity: 0 // Initialiser la quantité à 0 pour chaque boîte
+        quantity: 0
       }));
     });
   
@@ -31,26 +31,22 @@ export class BoxesComponent implements OnInit {
   }
 
   addToCart(box: Box): void {
-    const totalCartQuantity = this.cart.reduce((total, item) => total + item.quantity, 0);
-  
-    if (totalCartQuantity < this.maxBoxes) {
-      const boxIndex = this.boxes.findIndex((item) => item.id === box.id);
-      if (boxIndex !== -1) {
-        if (this.boxes[boxIndex].quantity < 1) {
-          // S'il n'y a pas d'articles de cette boîte dans le panier
-          this.cart.push({ ...box, quantity: 1 });
-        } else {
-          // S'il y a déjà des articles de cette boîte dans le panier
-          const cartItemIndex = this.cart.findIndex((item) => item.id === box.id);
-          if (cartItemIndex !== -1) {
-            this.cart[cartItemIndex].quantity++;
-          }
-        }
-        this.boxes[boxIndex].quantity++;
-        this.totalAmount += box.prix;
+    if (this.cart.length < this.maxBoxes) {
+      const cartItem = this.cart.find(item => item.id === box.id);
+      if (cartItem) {
+        cartItem.quantity++;
+      } else {
+        this.cart.push({ ...box, quantity: 1 });
       }
+      this.totalAmount += box.prix;
+    } else {
+      console.log('Maximum number of boxes reached in the cart.');
     }
   }
+  
+  
+  
+  
   
   
   removeFromCart(box: Box): void {
@@ -67,9 +63,10 @@ export class BoxesComponent implements OnInit {
       if (this.cart[cartItemIndex].quantity === 0) {
         this.cart.splice(cartItemIndex, 1);
       }
-      this.totalAmount -= box.prix;
+      this.totalAmount -= box.prix; // Mettre à jour totalAmount lors de la suppression d'un article du panier
     }
   }
+  
   
   
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { Box } from './box.model';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,8 +13,15 @@ export class BoxesService {
   constructor(private http: HttpClient) {}
 
   getBoxes(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.apiUrl).pipe(
+      tap(data => console.log('Boxes data:', data)),
+      catchError(error => {
+        console.error('Error fetching boxes:', error);
+        return of([]);
+      })
+    );
   }
+
   getCategories(): Observable<string[]> {
     return this.http.get<string[]>(`${this.apiUrl}/categories`);
   }
