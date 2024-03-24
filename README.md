@@ -32,35 +32,35 @@
 ### Nom de l'application :
 Le nom de notre application est **SushiLab**
 ### Logo :
-![Logo](/SAE_401/images/logosushigang2.png)
+![Logo](/images/logosushigang2.png)
 
 ## Diagramme use case 
 
-![image du useCaseDiagram](/SAE_401/images/diagramme_usecase.png)
+![image du useCaseDiagram](/images/diagramme_usecase.png)
 
 ## Diagramme d'activité
 
-![image du diagramme d'activité](/SAE_401/images/diagrammeActivité.png)
-![image du diagramme d'activité 2](/SAE_401/images/diagrammeActivité2.png)
+![image du diagramme d'activité](/images/diagrammeActivité.png)
+![image du diagramme d'activité 2](/images/diagrammeActivité2.png)
 
 ## Diagramme de classe
 
-![image du diagramme de classe](/SAE_401/images/diagramme_de_classe.png)
+![image du diagramme de classe](/images/diagramme_de_classe.png)
 
 ## Architecture fonctionnelle de l'application
-![Image de l'architecture fonctionnelle de l'application](/SAE_401/images/architecture_fonctionnelle.png)
+![Image de l'architecture fonctionnelle de l'application](/images/architecture_fonctionnelle.png)
 ## Maquette : Accueil, Panier, Détails
 ### Maquette Accueil
 
-![image de la page d'accueil de l'application](/SAE_401/images/accueil.png)
+![image de la page d'accueil de l'application](/images/accueil.png)
 
 ### Maquette Panier
 
-![Image du panier de l'application](/SAE_401/images/panier.png)
+![Image du panier de l'application](/images/panier.png)
 
 ### Maquette Détails
 
-![Image de la page détails de l'application](/SAE_401/images/détails.png)
+![Image de la page détails de l'application](/images/détails.png)
 
 
 
